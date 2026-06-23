@@ -1,6 +1,6 @@
 package com.careconnect.api;
 import com.careconnect.security.JwtService; import com.careconnect.user.*; import jakarta.validation.constraints.*; import java.time.LocalDate; import org.springframework.http.*; import org.springframework.security.crypto.password.PasswordEncoder; import org.springframework.web.bind.annotation.*;
-@RestController @RequestMapping("/api/auth") @CrossOrigin(origins="http://localhost:5173") public class AuthController {
+@RestController @RequestMapping("/api/auth") @CrossOrigin(origins="http://localhost:5174") public class AuthController {
   private final UserRepository users; private final PasswordEncoder encoder; private final JwtService jwt;
   public AuthController(UserRepository users,PasswordEncoder encoder,JwtService jwt){this.users=users;this.encoder=encoder;this.jwt=jwt;}
   record Register(@NotBlank String firstName,@NotBlank String lastName,@Email String email,@Size(min=8) String password,LocalDate dateOfBirth){} record Login(@Email String email,@NotBlank String password){} record Session(String token,String firstName,String email){}
