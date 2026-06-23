@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5432/careconnect}
+    username: ${SPRING_DATASOURCE_USERNAME:careconnect}
+    password: ${SPRING_DATASOURCE_PASSWORD:careconnect}
+  jpa:
+    hibernate.ddl-auto: update
+    open-in-view: false
+app:
+  jwt-secret: ${APP_JWT_SECRET:local-development-secret-must-be-at-least-thirty-two-characters}
+  jwt-expiration-ms: 86400000
