@@ -15,7 +15,7 @@ A full-stack healthcare patient portal for account registration, secure sign-in,
 docker compose up --build
 ```
 
-Open `http://localhost:5173`. The API is served at `http://localhost:8080/api`.
+Open `http://localhost:5174`. The API is served at `http://localhost:8080/api`.
 
 ## Demo credentials
 
