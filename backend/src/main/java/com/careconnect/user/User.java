@@ -13,5 +13,7 @@ public class User {
   private LocalDate dateOfBirth;
   protected User() {}
   public User(String firstName, String lastName, String email, String password, LocalDate dateOfBirth) { this.firstName=firstName; this.lastName=lastName; this.email=email; this.password=password; this.dateOfBirth=dateOfBirth; }
+  public void updateProfile(String firstName, String lastName, LocalDate dateOfBirth){this.firstName=firstName;this.lastName=lastName;this.dateOfBirth=dateOfBirth;}
+  public LocalDate getDateOfBirth(){return dateOfBirth;}
   public Long getId(){return id;} public String getFirstName(){return firstName;} public String getLastName(){return lastName;} public String getEmail(){return email;} public String getPassword(){return password;}
 }
