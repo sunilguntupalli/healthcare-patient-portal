@@ -19,7 +19,13 @@ Open `http://localhost:5174`. The API is served at `http://localhost:8081/api`; 
 
 ## Demo credentials
 
-After the API starts, sign in with `patient@careconnect.dev` / `Password123!`.
+After the API starts, each account opens its role-specific workspace:
+
+| Workspace | Email | Password |
+| --- | --- | --- |
+| Patient portal | `patient@careconnect.dev` | `Password123!` |
+| Doctor portal | `doctor@careconnect.dev` | `Doctor123!` |
+| Management portal | `admin@careconnect.dev` | `Admin123!` |
 
 ## Local development
 

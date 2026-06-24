@@ -1,5 +1,6 @@
 package com.careconnect.appointment;
 import com.careconnect.user.User;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
@@ -17,5 +18,6 @@ public class Appointment {
   public void cancel(){ this.status = "CANCELLED"; }
   public void reschedule(LocalDateTime scheduledAt){this.scheduledAt=scheduledAt;this.status="CONFIRMED";}
   public boolean belongsTo(Long patientId){ return patient.getId().equals(patientId); }
+  @JsonIgnore public User getPatient(){return patient;}
   public Long getId(){return id;} public String getProvider(){return provider;} public String getSpecialty(){return specialty;} public LocalDateTime getScheduledAt(){return scheduledAt;} public String getStatus(){return status;} public String getReason(){return reason;}
 }
