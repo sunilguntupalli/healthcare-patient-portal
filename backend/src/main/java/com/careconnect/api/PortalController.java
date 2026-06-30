@@ -1,11 +1,11 @@
 package com.careconnect.api;
-import com.careconnect.appointment.*; import com.careconnect.record.*; import com.careconnect.user.*; import jakarta.validation.Valid; import jakarta.validation.constraints.Future; import jakarta.validation.constraints.NotBlank; import java.time.LocalDate; import java.time.LocalDateTime; import java.util.List; import org.springframework.http.*; import org.springframework.security.core.Authentication; import org.springframework.web.bind.annotation.*;
-@RestController @RequestMapping("/api") @CrossOrigin(origins="http://localhost:5174") public class PortalController {
+import com.careconnect.appointment.*; import com.careconnect.record.*; import com.careconnect.user.*; import jakarta.validation.Valid; import jakarta.validation.constraints.Future; import jakarta.validation.constraints.NotBlank; import jakarta.validation.constraints.NotNull; import java.time.LocalDate; import java.time.LocalDateTime; import java.util.List; import org.springframework.http.*; import org.springframework.security.core.Authentication; import org.springframework.web.bind.annotation.*;
+@RestController @RequestMapping("/api") public class PortalController {
  private final UserRepository users;private final AppointmentRepository appointments;private final MedicalRecordRepository records;
  public PortalController(UserRepository users,AppointmentRepository appointments,MedicalRecordRepository records){this.users=users;this.appointments=appointments;this.records=records;}
  private User me(Authentication a){return users.findByEmail(a.getName()).orElseThrow();}
- record AppointmentInput(@NotBlank String provider,@NotBlank String specialty,@Future LocalDateTime scheduledAt,String reason){}
- record RescheduleInput(@Future LocalDateTime scheduledAt){}
+ record AppointmentInput(@NotBlank String provider,@NotBlank String specialty,@NotNull @Future LocalDateTime scheduledAt,String reason){}
+ record RescheduleInput(@NotNull @Future LocalDateTime scheduledAt){}
  record AppointmentView(Long id,String provider,String specialty,LocalDateTime scheduledAt,String status,String reason){}
  record ProfileView(String firstName,String lastName,String email,LocalDate dateOfBirth){}
  record ProfileInput(@NotBlank String firstName,@NotBlank String lastName,LocalDate dateOfBirth){}

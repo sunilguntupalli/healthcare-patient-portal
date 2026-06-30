@@ -12,7 +12,7 @@ import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-@RestController @RequestMapping("/api") @CrossOrigin(origins="http://localhost:5174")
+@RestController @RequestMapping("/api")
 public class StaffController {
   private final UserRepository users; private final AppointmentRepository appointments; private final MedicalRecordRepository records;
   public StaffController(UserRepository users,AppointmentRepository appointments,MedicalRecordRepository records){this.users=users;this.appointments=appointments;this.records=records;}
