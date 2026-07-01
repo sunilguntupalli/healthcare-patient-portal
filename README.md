@@ -1,6 +1,23 @@
 # CareConnect Patient Portal
 
+[![CI](https://github.com/sunilguntupalli/healthcare-patient-portal/actions/workflows/ci.yml/badge.svg)](https://github.com/sunilguntupalli/healthcare-patient-portal/actions/workflows/ci.yml)
+
 A full-stack healthcare platform with separate patient, doctor, and management workspaces. It supports secure registration, appointments, profile management, clinical notes, medical records, and role-aware administration.
+
+## Architecture
+
+```mermaid
+flowchart LR
+    Patient[Patient] --> Web[React portal]
+    Doctor[Doctor] --> Web
+    Admin[Management] --> Web
+    Web --> API[Spring Boot API]
+    API --> Security[JWT + role authorization]
+    API --> DB[(PostgreSQL)]
+    Security --> PatientRoutes[Patient routes]
+    Security --> DoctorRoutes[Doctor routes]
+    Security --> AdminRoutes[Admin routes]
+```
 
 ## Stack
 
@@ -41,6 +58,8 @@ cd ../frontend && npm run build
 ```
 
 The backend suite uses an isolated H2 test database and verifies login roles, route authorization, and request validation. Production database changes are managed through versioned Flyway migrations in `backend/src/main/resources/db/migration`.
+
+GitHub Actions runs the backend verification suite, builds the React application, and validates both container images for every push and pull request.
 
 ## Security notes
 
